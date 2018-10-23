@@ -1,0 +1,17 @@
+apply plugin: 'com.github.maiflai.scalatest'
+
+dependencies {
+
+    testCompile group: 'org.scalactic', name: sclArt('scalactic'), version: project.ext.get('scalactic.version')
+    testCompile group: 'org.scalatest', name: sclArt('scalatest'), version: project.ext.get('scalatest.version')
+    // required by the scalatest gradle plugin
+    testRuntime group: 'org.pegdown', name: 'pegdown', version: project.ext.get('pegdown.version')
+}
+
+test {
+    // force run task all the time
+    outputs.upToDateWhen { false }
+
+    maxParallelForks = 1
+
+}
